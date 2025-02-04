@@ -1,14 +1,20 @@
 // components/UserList.tsx
 import { useQuery } from '@tanstack/react-query';
 
+// const fetchUsers = async () => {
+//   const response = await fetch('https://jsonplaceholder.typicode.com/users');
+//   if (!response.ok) {
+//     throw new Error('Network response was not ok');
+//   }
+//   return response.json();
+// };
 const fetchUsers = async () => {
-  const response = await fetch('https://jsonplaceholder.typicode.com/users');
+  const response = await fetch('http://localhost:3001/users');
   if (!response.ok) {
     throw new Error('Network response was not ok');
   }
   return response.json();
 };
-
 const UserList = () => {
   const { data, error, isLoading } = useQuery(['UserList'], fetchUsers);
 
@@ -29,5 +35,6 @@ const UserList = () => {
     </div>
   );
 };
+
 
 export default UserList;
